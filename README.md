@@ -51,19 +51,25 @@
 
 ## 获取完整交付物
 
-图片、视频、音频、字体、体素及二进制模型等文件使用 Git LFS。克隆前安装 Git LFS，然后执行：
+仓库保留源码、素材与**封面/截图**；**视频成片不纳入版本控制**，统一发布到视频平台（见各作品的 README 链接）。
+
+图片、音频、字体、体素及二进制模型等文件使用 Git LFS。克隆前安装 Git LFS，然后执行：
 
 ```sh
 git lfs install
-git clone https://github.com/l4place0/ai-benchmark.git
-cd ai-benchmark
+git clone https://github.com/l4place0/ai-lab.git
+cd ai-lab
 git lfs pull
 ```
 
-> 未执行 `git lfs pull` 时，二进制文件只会是几百字节的指针文件，视频与贴图无法播放。
+> 未执行 `git lfs pull` 时，二进制文件只会是几百字节的指针文件，贴图与模型无法正常显示。
+
+## 仓库拆分
+
+本仓库是**内容仓**，存放工程文件与交付物；展示站（[`ai-lab-site`](https://github.com/l4place0-cloud/ai-lab-site)）是独立的**展示仓**，通过 `manifest.json` 与本仓库解耦——展示层只引用路径与元数据，不复制资产。
 
 ## 文件管理
 
-保留源码、提示词、素材、最终交付物、展示截图和评测记录。临时渲染片段、浏览器用户数据、缓存、日志和原始 PCM 等中间产物不纳入版本控制。
+保留源码、提示词、素材、交付物、展示截图和评测记录。**视频成片、临时渲染片段、浏览器用户数据、缓存、日志和原始 PCM 等不纳入版本控制。**
 
 `node_modules`、`_build`、Python 虚拟环境、便携 Node / FFmpeg / Chrome 和下载的模型属于本地运行依赖，不上传；需要重建作品时，请按各项目说明准备对应依赖。预览和分析脚本直接引用的随附 JavaScript 库及许可证保留在仓库中。
