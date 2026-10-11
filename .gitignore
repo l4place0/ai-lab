@@ -44,6 +44,12 @@ logs/
 **/render/samples/
 **/frames_test/
 
+# Video deliverables are published to external platforms (Bilibili etc.);
+# the repository keeps only the link and cover image, not the raw footage.
+*.mp4
+*.webm
+*.mov
+
 # Machine-local runtimes, browser profiles, and downloaded models
 .venv/
 venv/
