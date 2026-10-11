@@ -1,0 +1,31 @@
+{
+    "$schema":  "./meta.schema.json",
+    "model":  "glm-5.3-flash",
+    "provider":  {
+                     "kind":  "official",
+                     "channel":  null
+                 },
+    "harness":  "zcode",
+    "task":  "Riding Pelican",
+    "prompt":  "prompts/Riding Pelican.md",
+    "date":  null,
+    "environment":  {
+                        "os":  "Windows 11 专业版 (build 26300, x64)",
+                        "cpu":  "Intel Core i5-1135G7 (4C/8T @ 2.40GHz)",
+                        "gpu":  "NVIDIA GeForce GTX 1650 Ti 4GB + Intel Iris Xe",
+                        "ram":  "16 GB"
+                    },
+    "grade":  null,
+    "gradeReason":  null,
+    "attempts":  1,
+    "kept":  "shot01",
+    "rejected":  [
+
+                 ],
+    "deliverables":  {
+                         "kind":  "assets",
+                         "entry":  null,
+                         "videoUrl":  null
+                     },
+    "reviewNotes":  null
+}

@@ -1,0 +1,35 @@
+{
+    "$schema":  "./meta.schema.json",
+    "model":  "gemini-3.8-flash",
+    "provider":  {
+                     "kind":  "official",
+                     "channel":  null
+                 },
+    "harness":  "antigravity",
+    "task":  "Sakura Station",
+    "prompt":  "prompts/场景_3D/Sakura Station.md",
+    "date":  "2026-10-03",
+    "environment":  {
+                        "os":  "Windows 11 专业版 (build 26300, x64)",
+                        "cpu":  "Intel Core i5-1135G7 (4C/8T @ 2.40GHz)",
+                        "gpu":  "NVIDIA GeForce GTX 1650 Ti 4GB + Intel Iris Xe",
+                        "ram":  "16 GB"
+                    },
+    "grade":  "不合格",
+    "gradeReason":  null,
+    "attempts":  2,
+    "kept":  "shot02",
+    "rejected":  [
+                     {
+                         "version":  "shot01",
+                         "grade":  null,
+                         "reason":  null
+                     }
+                 ],
+    "deliverables":  {
+                         "kind":  "interactive",
+                         "entry":  "index.html",
+                         "videoUrl":  null
+                     },
+    "reviewNotes":  null
+}
