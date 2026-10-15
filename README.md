@@ -14,25 +14,30 @@
 
 ## 目录结构
 
-顶层为**模型**，其下为**执行工具链**，再下为**任务**，最内层为 **shot / 修订版本**。层级与实际工作目录逐层对应，不做扁平化。
+顶层为**模型**，其下为**任务**。每个任务只保留效果最好的一次，工程文件直接平铺在任务目录内，旁边是一份 `meta.json`。
 
 ```
 <模型>/
-└── <工具链>/
-    └── <任务名称>/
-        └── shot01/  shot02/  revision02/  ...
+└── <任务名称>/
+    ├── meta.json     # 工具链、提供商、环境、评分、交付物形态
+    ├── README.md     # 该次运行的经过与评测记录
+    └── ...           # 工程文件与交付物
 ```
 
-| 模型 | 工具链 | 已评测任务 |
+`meta.json` 是机器可读的索引，[`tools/build-manifest.ps1`](tools/build-manifest.ps1) 据此生成 [`manifest.json`](manifest.json)，供展示站消费。
+
+| 模型 | 工具链（提供商） | 已保留任务 |
 |---|---|---|
 | **Claude Opus 5.5** | `antigravity` | World.Execute(me) |
-| **DeepSeek v4.1 Flash** | `dsh`, `dsh(cb2api)` | Pure Line Room, World.Execute(me), World.Execute(me) MV, City Corner P1 Plus, Rural China P1 Plus |
-| **Gemini 3.8 Flash** | `antigravity`, `codex(agy2api)`, `pi(agy2api)` | World.Execute(me) MV, Sakura Station, City Corner P1 Plus, Rural China P1, Rural China P1 Plus, Pure Line Room, Time Gallery, My Soul Knight, Riding Pelican, fork-mv, fork-website |
-| **GLM 5.3 Flash** | `zcode` | World.Execute(me), Pure Line Room, Sakura Station, City Corner P1 Plus, Rural China P1, Rural China P1 Plus, Time Gallery, My Soul Knight, Riding Pelican |
+| **DeepSeek v4.1 Flash** | `dsh`、`dsh` (cb2api) | Pure Line Room, World.Execute(me), World.Execute(me) MV, Rural China P1 Plus |
+| **Gemini 3.8 Flash** | `antigravity` | World.Execute(me) MV, Sakura Station, Rural China P1, Rural China P1 Plus, Pure Line Room, Time Gallery, My Soul Knight |
+| **GLM 5.3 Flash** | `zcode` | World.Execute(me), Pure Line Room, Sakura Station, Rural China P1, Rural China P1 Plus, Time Gallery, My Soul Knight, Riding Pelican |
 | **GPT-6 Astra** | `codex` | World.Execute(me) MV |
 | **GPT-6.1 Sol** | `codex` | World.Execute(me) MV |
 
-> 同一模型经不同工具链执行的记录分开保存，便于区分「模型能力」与「工具链加成」。
+工具链名称带括号表示经**第三方渠道**接入，括号内为渠道名（如 `cb2api`）；不带括号即为官方 API / 订阅。渠道记在 `meta.json` 的 `provider` 字段。
+
+> 同一模型可经不同工具链执行；任务名因此可能重复，此时保留全部并在 `meta.json` 中区分 `harness`。
 
 ### 任务类型
 
@@ -44,10 +49,14 @@
 | 游戏 / 其他 | My Soul Knight, Riding Pelican | [`prompts/My Soul Knight.md`](prompts/My%20Soul%20Knight.md), [`prompts/Riding%20Pelican.md`](prompts/Riding%20Pelican.md) |
 
 - [`prompts/`](prompts) —— 原始任务提示词，按任务类型整理，是横评的**唯一自变量**。
-- 各模型目录 —— 保留工具环境、任务名称与 `shot` / 修订版本的原有层级。
+- 各模型目录 —— 平铺该模型保留下来的任务。
 - 每个作品 —— 运行方式、素材来源、渲染参数与评测记录见其目录内的 README。
 
-很多任务会在不同模型下重复出现（如 `Pure Line Room`、`World.Execute(me) MV`），这些重复目录就是**同题横评的对照样本**。
+很多任务会在不同模型下重复出现（如 `Pure Line Room`、`World.Execute(me) MV`），这些同名目录就是**同题横评的对照样本**。
+
+### 落选版本
+
+每个任务只留最后效果最好的一次。落选版本的文件不保留，但会记进 `meta.json` 的 `rejected` 字段，说明是第几次、什么原因，避免「只看得见胜者」。
 
 ## 获取完整交付物
 
@@ -70,6 +79,6 @@ git lfs pull
 
 ## 文件管理
 
-保留源码、提示词、素材、交付物、展示截图和评测记录。**视频成片、临时渲染片段、浏览器用户数据、缓存、日志和原始 PCM 等不纳入版本控制。**
+保留源码、提示词、素材、交付物、展示截图、评测记录与 `meta.json`。**视频成片、临时渲染片段、浏览器用户数据、缓存、日志和原始 PCM 等不纳入版本控制。**
 
 `node_modules`、`_build`、Python 虚拟环境、便携 Node / FFmpeg / Chrome 和下载的模型属于本地运行依赖，不上传；需要重建作品时，请按各项目说明准备对应依赖。预览和分析脚本直接引用的随附 JavaScript 库及许可证保留在仓库中。
