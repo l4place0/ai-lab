@@ -1,6 +1,6 @@
 {
     "schema":  2,
-    "generated":  "2026-10-11T07:33:33Z",
+    "generated":  "2026-10-16T04:46:45Z",
     "source":  "https://github.com/l4place0/ai-lab",
     "count":  22,
     "items":  [
@@ -23,7 +23,7 @@
                       "date":  null,
                       "prompt":  null,
                       "hasDoc":  true,
-                      "videoUrl":  null
+                      "videoUrl":  "https://www.bilibili.com/video/BV1ZKJQ6ZEqV/"
                   },
                   {
                       "id":  "deepseek-v4-1-flash-pure-line-room",
