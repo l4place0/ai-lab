@@ -1,0 +1,49 @@
+name: Notify showcase site
+
+# The content repository and the showcase site are separate repos. When content
+# changes, dispatch an event so the site rebuilds without polling.
+#
+# GitHub's default GITHUB_TOKEN cannot trigger a workflow in another repository,
+# so this requires a token stored as the SITE_DISPATCH_TOKEN secret: a
+# fine-grained PAT with "Contents: read and write" on the site repository.
+# Until that secret exists the job warns and succeeds, so pushes are not
+# blocked; the site can still be rebuilt manually or on its own schedule.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repository_dispatch to the site
+        env:
+          SITE_DISPATCH_TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
+          SITE_REPO: l4place0-cloud/ai-lab-site
+        run: |
+          if [ -z "$SITE_DISPATCH_TOKEN" ]; then
+            echo "::warning::SITE_DISPATCH_TOKEN is not set; skipping site notification."
+            exit 0
+          fi
+
+          body=$(jq -n \
+            --arg sha "$GITHUB_SHA" \
+            --arg repo "$GITHUB_REPOSITORY" \
+            --arg ref "$GITHUB_REF_NAME" \
+            '{event_type: "content-updated",
+              client_payload: {sha: $sha, repo: $repo, ref: $ref}}')
+
+          code=$(curl -sS -o /tmp/resp.txt -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $SITE_DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$SITE_REPO/dispatches" \
+            -d "$body")
+
+          if [ "$code" = "204" ]; then
+            echo "notified $SITE_REPO at $GITHUB_SHA"
+          else
+            echo "::warning::dispatch returned HTTP $code: $(cat /tmp/resp.txt)"
+          fi
