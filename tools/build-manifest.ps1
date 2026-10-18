@@ -57,7 +57,7 @@ $entries = @()
 $missingMeta = @()
 
 Get-ChildItem -LiteralPath $root -Directory |
-  Where-Object { $_.Name -notin @('.git','prompts','tools','.github','.agents') } |
+  Where-Object { $_.Name -notin @('.git','prompts','tools','skills','.github') } |
   ForEach-Object {
     $model = $_
     Get-ChildItem -LiteralPath $model.FullName -Directory | ForEach-Object {

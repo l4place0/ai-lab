@@ -127,7 +127,7 @@ description: >-
 可直接调用本技能附带的自动化脚本 [`scripts/publish-work.ps1`](./scripts/publish-work.ps1) 完成文件净化拷贝、`meta.json` 生成、`manifest.json` 重建与 Git 推送：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/skills/ai-lab-curator/scripts/publish-work.ps1" `
+powershell -ExecutionPolicy Bypass -File "skills/ai-lab-curator/scripts/publish-work.ps1" `
   -RepoRoot "d:/tmp/ai-lab" `
   -SourceDir "d:/tmp/ld02" `
   -Model "gemini-4-argon" `
