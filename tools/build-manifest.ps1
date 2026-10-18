@@ -1,4 +1,4 @@
-﻿# Generates manifest.json for the ai-lab content repository.
+# Generates manifest.json for the ai-lab content repository.
 #
 # The repository layout is <model>/<task>/, and each work carries a meta.json
 # describing its harness, provider, environment, grade and deliverables. This
@@ -57,7 +57,7 @@ $entries = @()
 $missingMeta = @()
 
 Get-ChildItem -LiteralPath $root -Directory |
-  Where-Object { $_.Name -notin @('.git','prompts','tools','.github') } |
+  Where-Object { $_.Name -notin @('.git','prompts','tools','.github','.agents') } |
   ForEach-Object {
     $model = $_
     Get-ChildItem -LiteralPath $model.FullName -Directory | ForEach-Object {
