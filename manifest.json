@@ -1,8 +1,8 @@
 {
     "schema":  2,
-    "generated":  "2026-10-16T04:46:45Z",
+    "generated":  "2026-10-18T03:13:49Z",
     "source":  "https://github.com/l4place0/ai-lab",
-    "count":  22,
+    "count":  23,
     "items":  [
                   {
                       "id":  "claude-opus-5-5-world-execute-me",
@@ -253,6 +253,27 @@
                       "attempts":  2,
                       "date":  "2026-10-03",
                       "prompt":  "prompts/World.Execute(me) MV.md",
+                      "hasDoc":  true,
+                      "videoUrl":  null
+                  },
+                  {
+                      "id":  "gemini-4-argon-london-rainy-cafe",
+                      "model":  "gemini-4-argon",
+                      "tool":  "antigravity",
+                      "harness":  "antigravity",
+                      "provider":  {
+                                       "kind":  "official",
+                                       "channel":  null
+                                   },
+                      "task":  "London Rainy Cafe",
+                      "path":  "gemini-4-argon/London Rainy Cafe",
+                      "kind":  "interactive",
+                      "entry":  "index.html",
+                      "cover":  "preview/01-hero.png",
+                      "grade":  "A",
+                      "attempts":  1,
+                      "date":  "2026-10-18",
+                      "prompt":  "prompts/场景_3D/London Rainy Cafe.md",
                       "hasDoc":  true,
                       "videoUrl":  null
                   },

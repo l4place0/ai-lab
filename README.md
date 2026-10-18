@@ -31,6 +31,7 @@
 | **Claude Opus 5.5** | `antigravity` | World.Execute(me) |
 | **DeepSeek v4.1 Flash** | `dsh`、`dsh` (cb2api) | Pure Line Room, World.Execute(me), World.Execute(me) MV, Rural China P1 Plus |
 | **Gemini 3.8 Flash** | `antigravity` | World.Execute(me) MV, Sakura Station, Rural China P1, Rural China P1 Plus, Pure Line Room, Time Gallery, My Soul Knight |
+| **Gemini 4 Argon** | `antigravity` | London Rainy Cafe |
 | **GLM 5.3 Flash** | `zcode` | World.Execute(me), Pure Line Room, Sakura Station, Rural China P1, Rural China P1 Plus, Time Gallery, My Soul Knight, Riding Pelican |
 | **GPT-6 Astra** | `codex` | World.Execute(me) MV |
 | **GPT-6.1 Sol** | `codex` | World.Execute(me) MV |
@@ -44,7 +45,7 @@
 | 类型 | 任务 | 提示词 |
 |---|---|---|
 | 音乐视频 / 程序化 MV | World.Execute(me) MV | [`prompts/World.Execute(me) MV.md`](prompts/World.Execute%28me%29%20MV.md) |
-| 3D 场景 | City Corner P1, City Corner P1 Plus, Rural China P1, Rural China P1 Plus, Sakura Station | [`prompts/场景_3D/`](prompts/场景_3D) |
+| 3D 场景 | City Corner P1, City Corner P1 Plus, London Rainy Cafe, Rural China P1, Rural China P1 Plus, Sakura Station | [`prompts/场景_3D/`](prompts/场景_3D) |
 | WebGL 交互 | Pure Line Room, Time Gallery | [`prompts/WebGL/`](prompts/WebGL) |
 | 游戏 / 其他 | My Soul Knight, Riding Pelican | [`prompts/My Soul Knight.md`](prompts/My%20Soul%20Knight.md), [`prompts/Riding%20Pelican.md`](prompts/Riding%20Pelican.md) |
 

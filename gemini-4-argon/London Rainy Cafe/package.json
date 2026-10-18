@@ -1,0 +1,12 @@
+{
+  "name": "rainy-london-cafe-diorama",
+  "version": "1.0.0",
+  "description": "Anime cel-shaded 3D miniature diorama of a rainy London street-corner café",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  }
+}
