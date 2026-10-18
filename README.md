@@ -30,7 +30,7 @@
 |---|---|---|
 | **Claude Opus 5.5** | `antigravity` | World.Execute(me) |
 | **DeepSeek v4.1 Flash** | `dsh`、`dsh` (cb2api) | Pure Line Room, World.Execute(me), World.Execute(me) MV, Rural China P1 Plus |
-| **Gemini 3.8 Flash** | `antigravity` | World.Execute(me) MV, Sakura Station, Rural China P1, Rural China P1 Plus, Pure Line Room, Time Gallery, My Soul Knight |
+| **Gemini 3.8 Flash** | `antigravity` | World.Execute(me) MV, Sakura Station, Rural China P1, Rural China P1 Plus, Pure Line Room, Time Gallery, My Soul Knight, London Rainy Cafe |
 | **Gemini 4 Argon** | `antigravity` | London Rainy Cafe |
 | **GLM 5.3 Flash** | `zcode` | World.Execute(me), Pure Line Room, Sakura Station, Rural China P1, Rural China P1 Plus, Time Gallery, My Soul Knight, Riding Pelican |
 | **GPT-6 Astra** | `codex` | World.Execute(me) MV |
